@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b1c">
+<title>کنکور من | مسیر موفقیت تو</title>
+<style>
+:root{--bg:#100b1c;--panel:#1c142b;--purple:#9b6cff;--pink:#d17cff;--text:#f7f2ff;--muted:#b5a9c9;--line:#352747}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 24px}
+.logo{font-size:23px;font-weight:bold;color:#c5a5ff}
+.logo span{color:white}
+.tag{font-size:12px;color:var(--muted)}
+.hero{padding:30px 24px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(ellipse at top left,#432269 0%,#21152f 45%,#171020 100%)}
+.hero h1{font-size:clamp(26px,5vw,43px);line-height:1.5;margin:8px 0}
+.hero p{color:#d2c4e5;max-width:620px}
+.pill{display:inline-block;border:1px solid #7251a4;border-radius:30px;padding:3px 12px;color:#d7bdff;font-size:12px}
+.btn{border:0;border-radius:12px;padding:11px 17px;background:var(--purple);color:white;font-weight:bold}
+.btn:hover{filter:brightness(1.12)}
+.btn.secondary{background:#30223f;border:1px solid #4b3860}
+.btn.danger{background:#57253d}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:19px;min-width:0}
+.card h2{font-size:18px;margin:0 0 13px}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 5px}
+input,select,textarea{width:100%;background:#110d1a;border:1px solid #453452;color:white;border-radius:10px;padding:11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--purple)}
+textarea{resize:vertical}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:17px}
+.stat{padding:14px 8px;background:#1b1428;border:1px solid var(--line);border-radius:14px;text-align:center}
+.stat strong{display:block;font-size:23px;color:#c5a5ff}
+.stat span{font-size:12px;color:var(--muted)}
+nav{display:flex;gap:8px;overflow-x:auto;padding:16px 0 6px}
+nav button{white-space:nowrap}
+nav button.active{background:var(--purple)}
+.page{display:none}
+.page.active{display:block}
+.task{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.task input{width:19px;margin-top:7px;accent-color:var(--purple)}
+.task.done .task-title{text-decoration:line-through;color:#8c80a0}
+.task-title{font-weight:bold}
+.task small{display:block;color:var(--muted)}
+.badge{font-size:11px;background:#38264d;color:#d9c5ff;padding:3px 8px;border-radius:8px}
+.result{padding:12px;background:#110d1a;border-radius:12px;margin-top:12px;white-space:pre-line}
+.muted{color:var(--muted);font-size:13px}
+.empty{color:var(--muted);text-align:center;padding:20px}
+footer{text-align:center;color:#897b9c;font-size:12px;padding:25px 0}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.hidden{display:none!important}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.wrap{padding:13px}.hero{padding:22px 17px}.stats{gap:6px}.stat strong{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="logo">کنکور <span>من</span> ✦</div>
+    <div class="tag">از امروز، یک قدم نزدیک‌تر</div>
+  </div>
+  <span class="pill">نسخه آزمایشی</span>
+</header>
+
+<section class="hero">
+  <span class="pill">مسیر اختصاصی تو</span>
+  <h1>آینده‌ات رو <span style="color:#c5a5ff">برنامه‌ریزی کن.</span></h1>
+  <p>هدفت رو مشخص کن، برنامه بساز، آزمون‌هات رو تحلیل کن و پیشرفتت رو قدم‌به‌قدم ببین.</p>
+  <div class="actions">
+    <button class="btn" onclick="showPage('profile')">ساخت پروفایل من ←</button>
+    <button class="btn secondary" onclick="showPage('planner')">برنامه‌ریزی درسی</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong id="taskCount">۰</strong><span>کار امروز</span></div>
+    <div class="stat"><strong id="doneCount">۰</strong><span>انجام‌شده</span></div>
+    <div class="stat"><strong id="examCount">۰</strong><span>آزمون ثبت‌شده</span></div>
+  </div>
+</section>
+
+<nav>
+  <button class="btn active" data-page="home" onclick="showPage('home')">خانه</button>
+  <button class="btn secondary" data-page="profile" onclick="showPage('profile')">پروفایل</button>
+  <button class="btn secondary" data-page="planner" onclick="showPage('planner')">برنامه من</button>
+  <button class="btn secondary" data-page="exams" onclick="showPage('exams')">تحلیل آزمون</button>
+  <button class="btn secondary" data-page="progress" onclick="showPage('progress')">پیشرفت من</button>
+</nav>
+
+<main>
+<section id="home" class="page active">
+  <div class="grid">
+    <div class="card">
+      <h2>👋 خوش اومدی <span id="welcomeName">کنکوری پرتلاش</span></h2>
+      <p class="muted" id="homeSummary">پروفایل تحصیلی‌ات رو تکمیل کن تا مسیرت رو مشخص کنیم.</p>
+      <button class="btn" onclick="showPage('profile')">تکمیل اطلاعات</button>
+    </div>
+    <div class="card">
+      <h2>🎯 هدف من</h2>
+      <p id="homeGoal" class="muted">هنوز هدفی ثبت نکردی.</p>
+      <p id="homeDate" class="muted"></p>
+      <button class="btn secondary" onclick="showPage('profile')">تنظیم هدف</button>
+    </div>
+    <div class="card">
+      <h2>📌 کارهای امروز</h2>
+      <div id="homeTasks" class="empty">هنوز برنامه‌ای ثبت نشده.</div>
+      <button class="btn secondary" onclick="showPage('planner')">رفتن به برنامه</button>
+    </div>
+    <div class="card">
+      <h2>📊 آخرین نتیجه</h2>
+      <div id="homeExam" class="empty">هنوز آزمونی ثبت نکردی.</div>
+      <button class="btn secondary" onclick="showPage('exams')">ثبت نتیجه آزمون</button>
+    </div>
+  </div>
+</section>
+
+<section id="profile" class="page">
+  <div class="card">
+    <h2>👤 پروفایل تحصیلی</h2>
+    <p class="muted">اطلاعاتت رو وارد کن تا برنامه متناسب با شرایطت باشه.</p>
+    <form id="profileForm">
+      <label>اسم یا نام مستعار</label>
+      <input id="name" maxlength="40" placeholder="مثلاً کیان">
+      <label>وضعیت تحصیلی</label>
+      <select id="grade">
+        <option value="دهم">پایه دهم</option>
+        <option value="یازدهم">پایه یازدهم</option>
+        <option value="دوازدهم">پایه دوازدهم</option>
+        <option value="پشت کنکور">فارغ‌التحصیل / پشت کنکور</option>
+      </select>
+      <label>رشته کنکور</label>
+      <select id="field">
+        <option>انسانی</option><option>تجربی</option><option>ریاضی</option><option>هنر</option><option>زبان</option>
+      </select>
+      <label>سال کنکور</label>
+      <select id="year"><option>۱۴۰۶</option><option>۱۴۰۷</option><option>۱۴۰۸</option><option>سایر</option></select>
+      <label>هدف تو</label>
+      <input id="goal" maxlength="100" placeholder="مثلاً رتبه زیر ۱۰۰۰ یا قبولی حقوق تهران">
+      <label>تاریخ هدف (اختیاری)</label>
+      <input id="goalDate" type="date">
+      <label>میانگین مطالعه واقعی روزانه (ساعت)</label>
+      <input id="hours" type="number" min="0" max="18" step="0.5" value="3">
+      <label>آزمون آزمایشی</label>
+      <select id="provider"><option>قلمچی</option><option>ماز</option><option>گزینه دو</option><option>سنجش</option><option>بدون آزمون</option><option>سایر</option></select>
+      <div class="actions"><button class="btn" type="submit">ذخیره پروفایل</button></div>
+    </form>
+    <div id="profileMessage" class="result hidden"></div>
+  </div>
+</section>
+
+<section id="planner" class="page">
+  <div class="grid">
+    <div class="card">
+      <h2>🗓️ ساخت برنامه روزانه</h2>
+      <p class="muted">درس‌ها، زمان در دسترس و تعداد تست رو وارد کن. برنامه پیشنهادی بر اساس زمان مطالعه‌ات ساخته می‌شه.</p>
+      <label>تاریخ برنامه</label><input type="date" id="planDate">
+      <label>زمان مطالعه امروز (ساعت)</label><input type="number" id="planHours" min="0.5" max="18" step="0.5" value="3">
+      <label>درس‌ها (هر درس در یک خط)</label>
+      <textarea id="subjects" rows="5" placeholder="مثلاً:&#10;علوم و فنون&#10;عربی&#10;فلسفه و منطق&#10;جامعه‌شناسی"></textarea>
+      <label>اولویت امروز</label>
+      <select id="priority"><option value="balanced">ترکیبی: یادگیری، تست و مرور</option><option value="learn">یادگیری بیشتر</option><option value="test">تست بیشتر</option><option value="review">مرور و رفع اشکال</option></select>
+      <button class="btn" onclick="generatePlan()">ساخت برنامه پیشنهادی</button>
+    </div>
+    <div class="card">
+      <h2>📋 برنامه امروز</h2>
+      <div id="taskList" class="empty">بعد از ساخت برنامه، کارهات اینجا نمایش داده می‌شن.</div>
+      <div class="actions">
+        <button class="btn secondary" onclick="addCustomTask()">افزودن کار دستی</button>
+        <button class="btn secondary" onclick="clearTasks()">پاک‌کردن برنامه</button>
+      </div>
+      <p class="muted">زمان‌ها پیشنهادی‌اند؛ بر اساس عملکردت اصلاحشون کن.</p>
+    </div>
+  </div>
+</section>
+
+<section id="exams" class="page">
+  <div class="grid">
+    <div class="card">
+      <h2>📝 ثبت آزمون</h2>
+      <form id="examForm">
+        <label>نام آزمون</label><input id="examName" maxlength="70" placeholder="مثلاً آزمون جامع مهر">
+        <label>تاریخ آزمون</label><input id="examDate" type="date">
+        <label>نام درس</label><input id="examSubject" maxlength="60" placeholder="مثلاً عربی">
+        <label>تعداد سؤال</label><input id="totalQ" type="number" min="1" value="20" required>
+        <label>تعداد درست</label><input id="correctQ" type="number" min="0" value="10" required>
+        <label>تعداد غلط</label><input id="wrongQ" type="number" min="0" value="2" required>
+        <label>تعداد نزده</label><input id="blankQ" type="number" min="0" value="8" required>
+        <button class="btn" type="submit">تحلیل و ذخیره نتیجه</button>
+      </form>
+      <div id="examResult" class="result hidden"></div>
+    </div>
+    <div class="card">
+      <h2>📈 آزمون‌های قبلی</h2>
+      <div id="examHistory" class="empty">نتایج ذخیره‌شده اینجا میان.</div>
+    </div>
+  </div>
+</section>
+
+<section id="progress" class="page">
+  <div class="card">
+    <h2>📊 گزارش پیشرفت</h2>
+    <p class="muted">خلاصه‌ای از برنامه‌ها و نتایج ثبت‌شده در همین مرورگر.</p>
+    <div id="progressReport" class="result">هنوز اطلاعات کافی ثبت نشده.</div>
+    <hr>
+    <h2>🗂️ پشتیبان اطلاعات</h2>
+    <p class="muted">می‌تونی اطلاعات آزمایشی ذخیره‌شده رو به‌صورت فایل پشتیبان بگیری.</p>
+    <div class="actions">
+      <button class="btn" onclick="exportData()">دریافت نسخه پشتیبان</button>
+      <button class="btn danger" onclick="resetData()">حذف اطلاعات این مرورگر</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>کنکور من ✦ نسخه آزمایشی — برنامه‌ریزی بهتر، قدم‌های مطمئن‌تر</footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const KEY='konkurManDemo_v1';
+const today=()=>new Date().toLocaleDateString('en-CA');
+const fa=n=>Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2});
+let data={profile:{},tasks:[],exams:[]};
+try{const saved=localStorage.getItem(KEY);if(saved)data={...data,...JSON.parse(saved)}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));render()}catch(e){alert('ذخیره‌سازی در این مرورگر ممکن نشد. فضای ذخیره‌سازی را بررسی کن.')}}
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+ document.querySelectorAll('nav button').forEach(b=>{const on=b.dataset.page===id;b.classList.toggle('active',on);b.classList.toggle('secondary',!on)});
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function fillProfile(){
+ const p=data.profile||{};
+ ['name','grade','field','year','goal','goalDate','hours','provider'].forEach(id=>{if(p[id]!==undefined)$(id).value=p[id]});
+}
+$('profileForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ data.profile={name:$('name').value.trim(),grade:$('grade').value,field:$('field').value,year:$('year').value,goal:$('goal').value.trim(),goalDate:$('goalDate').value,hours:Number($('hours').value)||0,provider:$('provider').value};
+ save();$('profileMessage').classList.remove('hidden');$('profileMessage').textContent='پروفایلت در این مرورگر ذخیره شد.';
+});
+function generatePlan(){
+ const hours=Number($('planHours').value),date=$('planDate').value||today();
+ if(!hours||hours<=0||hours>18){alert('زمان مطالعه را بین نیم ساعت تا ۱۸ ساعت وارد کن.');return}
+ const subjects=$('subjects').value.split('\n').map(s=>s.trim()).filter(Boolean);
+ if(!subjects.length){alert('حداقل نام یک درس را وارد کن.');return}
+ const mode=$('priority').value;
+ let blocks=mode==='learn'?[.55,.25,.20]:mode==='test'?[.25,.55,.20]:mode==='review'?[.25,.25,.50]:[.40,.40,.20];
+ const types=['یادگیری و مطالعه','تست و تمرین','مرور و تحلیل اشتباهات'];
+ const minutes=blocks.map(x=>Math.round(hours*60*x));
+ const total=minutes.reduce((a,b)=>a+b,0);minutes[0]+=Math.round(hours*60)-total;
+ data.tasks=[];
+ subjects.forEach((subject,i)=>{
+  const kind=types[i%3],mins=minutes[i%3];
+  data.tasks.push({id:Date.now()+i, date, title:subject+' — '+kind, detail:fa(mins)+' دقیقه',done:false});
+ });
+ if(subjects.length===1){
+  data.tasks=[
+   {id:Date.now()+1,date,title:subjects[0]+' — یادگیری و مطالعه',detail:fa(minutes[0])+' دقیقه',done:false},
+   {id:Date.now()+2,date,title:subjects[0]+' — تست و تمرین',detail:fa(minutes[1])+' دقیقه',done:false},
+   {id:Date.now()+3,date,title:subjects[0]+' — مرور و تحلیل اشتباهات',detail:fa(minutes[2])+' دقیقه',done:false}
+  ];
+ }
+ save();showPage('planner');
+}
+function addCustomTask(){
+ const title=prompt('عنوان کار درسی چیه؟');if(!title||!title.trim())return;
+ data.tasks.push({id:Date.now(),date:$('planDate').value||today(),title:title.trim(),detail:'کار اضافه‌شده',done:false});save();
+}
+function toggleTask(id){const t=data.tasks.find(t=>t.id===id);if(t){t.done=!t.done;save()}}
+function clearTasks(){if(confirm('برنامه ذخیره‌شده پاک بشه؟')){data.tasks=[];save()}}
+$('examForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const total=+$('totalQ').value,correct=+$('correctQ').value,wrong=+$('wrongQ').value,blank=+$('blankQ').value;
+ if(correct+wrong+blank!==total){alert('مجموع درست، غلط و نزده باید برابر تعداد سؤال‌ها باشه.');return}
+ const percent=total?((correct-wrong/3)/total*100):0;
+ const exam={id:Date.now(),name:$('examName').value.trim()||'آزمون بدون نام',date:$('examDate').value||today(),subject:$('examSubject').value.trim()||'درس نامشخص',total,correct,wrong,blank,percent};
+ data.exams.push(exam);save();
+ $('examResult').classList.remove('hidden');
+ $('examResult').textContent='درصد با نمره منفی: '+fa(percent)+'٪\nدرست: '+fa(correct)+' | غلط: '+fa(wrong)+' | نزده: '+fa(blank)+'\n'+(percent<30?'پیشنهاد: یادگیری پایه و بررسی پاسخ‌های غلط را در اولویت بگذار.':percent<60?'پیشنهاد: پاسخ‌های غلط را بررسی کن و تست آموزشی بیشتری بزن.':'پیشنهاد: مرور نکته‌های دشوار و تست زمان‌دار را ادامه بده.');
+});
+function render(){
+ const p=data.profile||{},tasks=data.tasks||[],exams=data.exams||[];
+ $('welcomeName').textContent=p.name||'کنکوری پرتلاش';
+ $('homeSummary').textContent=p.grade?(p.grade+' · رشته '+p.field+' · کنکور '+p.year):'پروفایل تحصیلی‌ات رو تکمیل کن تا مسیرت رو مشخص کنیم.';
+ $('homeGoal').textContent=p.goal||'هنوز هدفی ثبت نکردی.';
+ $('homeDate').textContent=p.goalDate?'تاریخ هدف: '+p.goalDate:'';
+ const todays=tasks.filter(t=>t.date===( $('planDate').value||today()));
+ $('taskCount').textContent=fa(todays.length);
+ $('doneCount').textContent=fa(todays.filter(t=>t.done).length);
+ $('examCount').textContent=fa(exams.length);
+ $('homeTasks').innerHTML=todays.length?todays.map(t=>'<div class="task '+(t.done?'done':'')+'"><input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask('+t.id+')"><div><div class="task-title">'+esc(t.title)+'</div><small>'+esc(t.detail)+'</small></div></div>').join(''):'<div class="empty">برای امروز برنامه‌ای نیست.</div>';
+ $('taskList').innerHTML=tasks.length?tasks.map(t=>'<div class="task '+(t.done?'done':'')+'"><input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask('+t.id+')"><div style="flex:1"><div class="task-title">'+esc(t.title)+'</div><small>'+esc(t.date)+' · '+esc(t.detail)+'</small></div></div>').join(''):'<div class="empty">هنوز برنامه‌ای ثبت نشده.</div>';
+ $('homeExam').innerHTML=exams.length?esc(exams[exams.length-1].subject)+' — '+fa(exams[exams.length-1].percent)+'٪':'هنوز آزمونی ثبت نکردی.';
+ $('examHistory').innerHTML=exams.length?[...exams].reverse().map(x=>'<div class="task"><div><b>'+esc(x.subject)+'</b><small>'+esc(x.name)+' · '+esc(x.date)+'</small><span class="badge">'+fa(x.percent)+'٪</span></div></div>').join(''):'<div class="empty">نتایج ذخیره‌شده اینجا میان.</div>';
+ const done=tasks.filter(t=>t.done).length;
+ const avg=exams.length?exams.reduce((a,x)=>a+x.percent,0)/exams.length:0;
+ const best=exams.length?Math.max(...exams.map(x=>x.percent)):0;
+ $('progressReport').textContent='کارهای ثبت‌شده: '+fa(tasks.length)+'\nکارهای انجام‌شده: '+fa(done)+'\nمیزان انجام کارها: '+fa(tasks.length?done/tasks.length*100:0)+'٪\nتعداد آزمون‌ها: '+fa(exams.length)+'\nمیانگین درصدهای ثبت‌شده: '+fa(avg)+'٪\nبهترین درصد ثبت‌شده: '+fa(best)+'٪\n\nاین گزارش فقط بر اساس اطلاعات واردشده در این نسخه است.';
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function exportData(){
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='konkur-man-backup.json';a.click();URL.revokeObjectURL(url);
+}
+function resetData(){
+ if(!confirm('همه اطلاعات ذخیره‌شده این نسخه در همین مرورگر حذف بشه؟'))return;
+ data={profile:{},tasks:[],exams:[]};try{localStorage.removeItem(KEY)}catch(e){}
+ location.reload();
+}
+$('planDate').value=today();$('examDate').value=today();
+fillProfile();render();
+</script>
+</body>
+</html>
