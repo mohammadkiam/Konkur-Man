@@ -4,314 +4,736 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100b1c">
-<title>کنکور من | مسیر موفقیت تو</title>
+<meta name="theme-color" content="#100c1c">
+<title>کنکور من | دستیار شخصی کنکور</title>
+
 <style>
-:root{--bg:#100b1c;--panel:#1c142b;--purple:#9b6cff;--pink:#d17cff;--text:#f7f2ff;--muted:#b5a9c9;--line:#352747}
+:root{
+  --bg:#0e0b18;
+  --panel:#191427;
+  --panel2:#211a32;
+  --border:#382d4c;
+  --text:#f8f5ff;
+  --muted:#aaa1bd;
+  --purple:#b49aff;
+  --pink:#edabf8;
+  --green:#91edc8;
+  --red:#ff9ead;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(ellipse at 85% 0%,#392050 0,transparent 36%),
+    radial-gradient(ellipse at 0% 45%,#202043 0,transparent 30%),
+    var(--bg);
+  font-family:Tahoma,Arial,sans-serif;
+  line-height:1.8;
+}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-.wrap{max-width:1050px;margin:auto;padding:18px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 24px}
-.logo{font-size:23px;font-weight:bold;color:#c5a5ff}
-.logo span{color:white}
-.tag{font-size:12px;color:var(--muted)}
-.hero{padding:30px 24px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(ellipse at top left,#432269 0%,#21152f 45%,#171020 100%)}
-.hero h1{font-size:clamp(26px,5vw,43px);line-height:1.5;margin:8px 0}
-.hero p{color:#d2c4e5;max-width:620px}
-.pill{display:inline-block;border:1px solid #7251a4;border-radius:30px;padding:3px 12px;color:#d7bdff;font-size:12px}
-.btn{border:0;border-radius:12px;padding:11px 17px;background:var(--purple);color:white;font-weight:bold}
-.btn:hover{filter:brightness(1.12)}
-.btn.secondary{background:#30223f;border:1px solid #4b3860}
-.btn.danger{background:#57253d}
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:19px;min-width:0}
-.card h2{font-size:18px;margin:0 0 13px}
-label{display:block;font-size:13px;color:var(--muted);margin:10px 0 5px}
-input,select,textarea{width:100%;background:#110d1a;border:1px solid #453452;color:white;border-radius:10px;padding:11px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--purple)}
-textarea{resize:vertical}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:17px}
-.stat{padding:14px 8px;background:#1b1428;border:1px solid var(--line);border-radius:14px;text-align:center}
-.stat strong{display:block;font-size:23px;color:#c5a5ff}
-.stat span{font-size:12px;color:var(--muted)}
-nav{display:flex;gap:8px;overflow-x:auto;padding:16px 0 6px}
-nav button{white-space:nowrap}
-nav button.active{background:var(--purple)}
-.page{display:none}
-.page.active{display:block}
-.task{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
-.task input{width:19px;margin-top:7px;accent-color:var(--purple)}
-.task.done .task-title{text-decoration:line-through;color:#8c80a0}
-.task-title{font-weight:bold}
-.task small{display:block;color:var(--muted)}
-.badge{font-size:11px;background:#38264d;color:#d9c5ff;padding:3px 8px;border-radius:8px}
-.result{padding:12px;background:#110d1a;border-radius:12px;margin-top:12px;white-space:pre-line}
-.muted{color:var(--muted);font-size:13px}
-.empty{color:var(--muted);text-align:center;padding:20px}
-footer{text-align:center;color:#897b9c;font-size:12px;padding:25px 0}
-hr{border:0;border-top:1px solid var(--line);margin:18px 0}
-.hidden{display:none!important}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.wrap{padding:13px}.hero{padding:22px 17px}.stats{gap:6px}.stat strong{font-size:19px}}
+button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--purple);
+  outline-offset:2px;
+}
+.container{max-width:1150px;margin:auto;padding:20px 15px 50px}
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;margin-bottom:22px;
+}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{
+  width:46px;height:46px;border-radius:15px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  color:#21132f;font-size:25px;font-weight:bold;
+}
+.brand h1{font-size:19px;margin:0}
+.brand p{font-size:11px;color:var(--muted);margin:0}
+.pill{
+  font-size:11px;padding:5px 10px;border-radius:30px;
+  border:1px solid #59436d;background:#251b36;color:#eadcff;
+}
+.hero{
+  display:grid;grid-template-columns:1.4fr .8fr;
+  gap:14px;margin-bottom:15px;
+}
+.card{
+  background:linear-gradient(145deg,#1e1830,#151121);
+  border:1px solid var(--border);
+  border-radius:21px;padding:19px;
+  box-shadow:0 15px 40px #0002;
+}
+.eyebrow{color:var(--green);font-size:12px}
+.hero h2{font-size:clamp(25px,4vw,37px);line-height:1.5;margin:9px 0}
+.gradient{
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  color:transparent;background-clip:text;-webkit-background-clip:text;
+}
+.muted{color:var(--muted);font-size:12px}
+.hero p{font-size:13px;color:var(--muted);margin:0}
+.hero-stats{display:flex;flex-direction:column;justify-content:space-between}
+.big-number{font-size:39px;font-weight:bold}
+.progress{
+  height:8px;border-radius:20px;background:#352a47;
+  overflow:hidden;margin:7px 0;
+}
+.progress span{
+  display:block;height:100%;width:0;
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  transition:width .2s;
+}
+.nav{
+  display:flex;gap:8px;overflow-x:auto;
+  padding:2px 0 14px;
+}
+.nav button{
+  flex-shrink:0;padding:9px 14px;border-radius:12px;
+  border:1px solid var(--border);background:var(--panel);
+  color:var(--muted);
+}
+.nav button.active{background:#38284f;color:white;border-color:#8065ad}
+.view{display:none}
+.view.active{display:block}
+.layout{
+  display:grid;grid-template-columns:.85fr 1.2fr;
+  gap:14px;align-items:start;
+}
+.card h3{font-size:16px;margin:0}
+.card-head{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;gap:10px;margin-bottom:15px;
+}
+.card-head p{font-size:11px;color:var(--muted);margin:3px 0 0}
+.field{margin-bottom:13px}
+.field label{
+  display:block;font-size:12px;color:var(--muted);margin-bottom:6px;
+}
+.input,.select,.textarea{
+  width:100%;padding:11px;border-radius:11px;
+  background:#100d1d;border:1px solid #443557;
+  color:var(--text);outline:none;
+}
+.btn{
+  border:0;border-radius:11px;padding:10px 14px;
+  background:linear-gradient(100deg,var(--purple),var(--pink));
+  color:#20132e;font-weight:bold;
+}
+.btn.secondary{
+  background:#251d36;color:#eadfff;border:1px solid #463654;
+}
+.btn.danger{background:#3a202f;color:#ffb9c5;border:1px solid #603044}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.notice{
+  display:none;padding:10px 12px;margin-top:10px;
+  background:#153129;border:1px solid #376c59;
+  color:#a9f5d8;border-radius:11px;font-size:12px;
+}
+.subject-list,.task-list,.history-list{display:flex;flex-direction:column;gap:10px}
+.subject,.task,.history-item{
+  padding:13px;border:1px solid #352944;
+  background:#191427;border-radius:14px;
+}
+.subject-top,.task-top{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.subject-name{font-size:13px;font-weight:bold}
+.subject-meta{font-size:10px;color:var(--muted)}
+.target-number{color:var(--green);font-size:14px;font-weight:bold}
+.range{width:100%;accent-color:var(--purple);margin:10px 0 0}
+.books{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.book{
+  background:#251d36;border:1px solid #443557;
+  border-radius:7px;padding:2px 7px;font-size:10px;color:#d9cbf4;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}
+.stat{padding:10px;border:1px solid var(--border);background:#191427;border-radius:13px}
+.stat strong{display:block;font-size:20px}
+.stat span{font-size:10px;color:var(--muted)}
+.task{
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:start;gap:10px;
+}
+.task input[type=checkbox]{width:18px;height:18px;accent-color:var(--green);margin-top:7px}
+.task-title{font-size:12px;font-weight:bold}
+.task-desc{font-size:10px;color:var(--muted)}
+.tag{font-size:10px;background:#2c2240;color:#e2d3ff;padding:3px 7px;border-radius:7px;white-space:nowrap}
+.tag.weak{background:#402631;color:#ffb7c5}
+.tag.done{background:#18392e;color:#a7f5d8}
+.empty{
+  border:1px dashed #514063;border-radius:14px;
+  padding:20px;text-align:center;color:var(--muted);font-size:12px;
+}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bar-row{
+  display:grid;grid-template-columns:100px 1fr 40px;
+  align-items:center;gap:8px;margin:10px 0;font-size:11px;
+}
+.bar-row .progress{margin:0}
+.bar-row strong{text-align:left;color:var(--green)}
+.footer{text-align:center;color:#7d7393;font-size:10px;margin-top:24px}
+@media(max-width:760px){
+  .hero,.layout,.two{grid-template-columns:1fr}
+  .container{padding:13px 10px 35px}
+  .card{padding:15px;border-radius:18px}
+  .hero-stats{min-height:140px}
+  .task{grid-template-columns:auto 1fr}
+  .task .tag{grid-column:2;justify-self:start}
+  .stats{gap:6px}
+  .stat{padding:8px}
+  .stat strong{font-size:17px}
+  .bar-row{grid-template-columns:80px 1fr 35px}
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
+<div class="container">
+
 <header>
-  <div>
-    <div class="logo">کنکور <span>من</span> ✦</div>
-    <div class="tag">از امروز، یک قدم نزدیک‌تر</div>
+  <div class="brand">
+    <div class="logo">ک</div>
+    <div>
+      <h1>کنکور من</h1>
+      <p>دستیار شخصی مسیر کنکور تو</p>
+    </div>
   </div>
-  <span class="pill">نسخه آزمایشی</span>
+  <span class="pill" id="headerYear">کنکور ۱۴۰۶</span>
 </header>
 
 <section class="hero">
-  <span class="pill">مسیر اختصاصی تو</span>
-  <h1>آینده‌ات رو <span style="color:#c5a5ff">برنامه‌ریزی کن.</span></h1>
-  <p>هدفت رو مشخص کن، برنامه بساز، آزمون‌هات رو تحلیل کن و پیشرفتت رو قدم‌به‌قدم ببین.</p>
-  <div class="actions">
-    <button class="btn" onclick="showPage('profile')">ساخت پروفایل من ←</button>
-    <button class="btn secondary" onclick="showPage('planner')">برنامه‌ریزی درسی</button>
+  <div class="card">
+    <div class="eyebrow">مسیر شخصی‌سازی‌شده‌ی تو</div>
+    <h2>هر روز یک قدم جلوتر.<br><span class="gradient">با برنامه‌ای که تغییر می‌کند.</span></h2>
+    <p>رشته‌ات را انتخاب کن، هدف تعیین کن، نتیجه آزمون‌ها را ثبت کن و برنامه روزانه‌ات را بر اساس عملکردت بساز.</p>
   </div>
-  <div class="stats">
-    <div class="stat"><strong id="taskCount">۰</strong><span>کار امروز</span></div>
-    <div class="stat"><strong id="doneCount">۰</strong><span>انجام‌شده</span></div>
-    <div class="stat"><strong id="examCount">۰</strong><span>آزمون ثبت‌شده</span></div>
+  <div class="card hero-stats">
+    <div>
+      <div class="muted">پیشرفت برنامه امروز</div>
+      <div class="big-number" id="todayPercent">۰٪</div>
+      <div class="progress"><span id="todayBar"></span></div>
+      <div class="muted" id="todayCount">هنوز برنامه‌ای ساخته نشده</div>
+    </div>
+    <button class="btn" id="quickPlan">برنامه امروز من</button>
   </div>
 </section>
 
-<nav>
-  <button class="btn active" data-page="home" onclick="showPage('home')">خانه</button>
-  <button class="btn secondary" data-page="profile" onclick="showPage('profile')">پروفایل</button>
-  <button class="btn secondary" data-page="planner" onclick="showPage('planner')">برنامه من</button>
-  <button class="btn secondary" data-page="exams" onclick="showPage('exams')">تحلیل آزمون</button>
-  <button class="btn secondary" data-page="progress" onclick="showPage('progress')">پیشرفت من</button>
+<nav class="nav">
+  <button class="active" data-view="dashboard">امروز</button>
+  <button data-view="goals">رشته و هدف‌ها</button>
+  <button data-view="tests">آزمون‌ها</button>
+  <button data-view="analytics">تحلیل عملکرد</button>
 </nav>
 
-<main>
-<section id="home" class="page active">
-  <div class="grid">
+<!-- DASHBOARD -->
+<section class="view active" id="dashboard">
+  <div class="layout">
     <div class="card">
-      <h2>👋 خوش اومدی <span id="welcomeName">کنکوری پرتلاش</span></h2>
-      <p class="muted" id="homeSummary">پروفایل تحصیلی‌ات رو تکمیل کن تا مسیرت رو مشخص کنیم.</p>
-      <button class="btn" onclick="showPage('profile')">تکمیل اطلاعات</button>
-    </div>
-    <div class="card">
-      <h2>🎯 هدف من</h2>
-      <p id="homeGoal" class="muted">هنوز هدفی ثبت نکردی.</p>
-      <p id="homeDate" class="muted"></p>
-      <button class="btn secondary" onclick="showPage('profile')">تنظیم هدف</button>
-    </div>
-    <div class="card">
-      <h2>📌 کارهای امروز</h2>
-      <div id="homeTasks" class="empty">هنوز برنامه‌ای ثبت نشده.</div>
-      <button class="btn secondary" onclick="showPage('planner')">رفتن به برنامه</button>
-    </div>
-    <div class="card">
-      <h2>📊 آخرین نتیجه</h2>
-      <div id="homeExam" class="empty">هنوز آزمونی ثبت نکردی.</div>
-      <button class="btn secondary" onclick="showPage('exams')">ثبت نتیجه آزمون</button>
-    </div>
-  </div>
-</section>
-
-<section id="profile" class="page">
-  <div class="card">
-    <h2>👤 پروفایل تحصیلی</h2>
-    <p class="muted">اطلاعاتت رو وارد کن تا برنامه متناسب با شرایطت باشه.</p>
-    <form id="profileForm">
-      <label>اسم یا نام مستعار</label>
-      <input id="name" maxlength="40" placeholder="مثلاً کیان">
-      <label>وضعیت تحصیلی</label>
-      <select id="grade">
-        <option value="دهم">پایه دهم</option>
-        <option value="یازدهم">پایه یازدهم</option>
-        <option value="دوازدهم">پایه دوازدهم</option>
-        <option value="پشت کنکور">فارغ‌التحصیل / پشت کنکور</option>
-      </select>
-      <label>رشته کنکور</label>
-      <select id="field">
-        <option>انسانی</option><option>تجربی</option><option>ریاضی</option><option>هنر</option><option>زبان</option>
-      </select>
-      <label>سال کنکور</label>
-      <select id="year"><option>۱۴۰۶</option><option>۱۴۰۷</option><option>۱۴۰۸</option><option>سایر</option></select>
-      <label>هدف تو</label>
-      <input id="goal" maxlength="100" placeholder="مثلاً رتبه زیر ۱۰۰۰ یا قبولی حقوق تهران">
-      <label>تاریخ هدف (اختیاری)</label>
-      <input id="goalDate" type="date">
-      <label>میانگین مطالعه واقعی روزانه (ساعت)</label>
-      <input id="hours" type="number" min="0" max="18" step="0.5" value="3">
-      <label>آزمون آزمایشی</label>
-      <select id="provider"><option>قلمچی</option><option>ماز</option><option>گزینه دو</option><option>سنجش</option><option>بدون آزمون</option><option>سایر</option></select>
-      <div class="actions"><button class="btn" type="submit">ذخیره پروفایل</button></div>
-    </form>
-    <div id="profileMessage" class="result hidden"></div>
-  </div>
-</section>
-
-<section id="planner" class="page">
-  <div class="grid">
-    <div class="card">
-      <h2>🗓️ ساخت برنامه روزانه</h2>
-      <p class="muted">درس‌ها، زمان در دسترس و تعداد تست رو وارد کن. برنامه پیشنهادی بر اساس زمان مطالعه‌ات ساخته می‌شه.</p>
-      <label>تاریخ برنامه</label><input type="date" id="planDate">
-      <label>زمان مطالعه امروز (ساعت)</label><input type="number" id="planHours" min="0.5" max="18" step="0.5" value="3">
-      <label>درس‌ها (هر درس در یک خط)</label>
-      <textarea id="subjects" rows="5" placeholder="مثلاً:&#10;علوم و فنون&#10;عربی&#10;فلسفه و منطق&#10;جامعه‌شناسی"></textarea>
-      <label>اولویت امروز</label>
-      <select id="priority"><option value="balanced">ترکیبی: یادگیری، تست و مرور</option><option value="learn">یادگیری بیشتر</option><option value="test">تست بیشتر</option><option value="review">مرور و رفع اشکال</option></select>
-      <button class="btn" onclick="generatePlan()">ساخت برنامه پیشنهادی</button>
-    </div>
-    <div class="card">
-      <h2>📋 برنامه امروز</h2>
-      <div id="taskList" class="empty">بعد از ساخت برنامه، کارهات اینجا نمایش داده می‌شن.</div>
-      <div class="actions">
-        <button class="btn secondary" onclick="addCustomTask()">افزودن کار دستی</button>
-        <button class="btn secondary" onclick="clearTasks()">پاک‌کردن برنامه</button>
+      <div class="card-head">
+        <div><h3>ساخت برنامه روزانه</h3><p>برنامه با توجه به هدف‌ها و آخرین نتایج تنظیم می‌شود.</p></div>
+        <span class="pill">خودکار</span>
       </div>
-      <p class="muted">زمان‌ها پیشنهادی‌اند؛ بر اساس عملکردت اصلاحشون کن.</p>
+
+      <div class="field">
+        <label for="studyHours">زمان مطالعه مفید امروز (ساعت)</label>
+        <input class="input" id="studyHours" type="number" min="1" max="14" step="0.5" value="4">
+      </div>
+
+      <div class="field">
+        <label for="planMode">نوع برنامه</label>
+        <select class="select" id="planMode">
+          <option value="balanced">متعادل؛ یادگیری، تست و مرور</option>
+          <option value="weak">تمرکز بیشتر بر درس‌های ضعیف</option>
+          <option value="review">مرور و تحلیل آزمون</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="todayNote">شرایط امروز (اختیاری)</label>
+        <input class="input" id="todayNote" placeholder="مثلاً امروز فقط ۳ ساعت تمرکز دارم">
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="generatePlan">برنامه‌ریزی هوشمند</button>
+        <button class="btn secondary" id="clearPlan">پاک‌کردن برنامه</button>
+      </div>
+
+      <div class="notice" id="planNotice"></div>
+
+      <div class="stats">
+        <div class="stat"><strong id="taskCount">۰</strong><span>کار برنامه</span></div>
+        <div class="stat"><strong id="plannedHours">۰</strong><span>ساعت برنامه</span></div>
+        <div class="stat"><strong id="weakCount">۰</strong><span>درس نیازمند تقویت</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div><h3>مسیر امروز</h3><p>بعد از انجام هر کار، آن را علامت بزن.</p></div>
+        <span class="pill" id="dateLabel">امروز</span>
+      </div>
+      <div class="task-list" id="tasks">
+        <div class="empty">برای شروع، برنامه امروزت را بساز.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="exams" class="page">
-  <div class="grid">
+<!-- GOALS -->
+<section class="view" id="goals">
+  <div class="layout">
     <div class="card">
-      <h2>📝 ثبت آزمون</h2>
-      <form id="examForm">
-        <label>نام آزمون</label><input id="examName" maxlength="70" placeholder="مثلاً آزمون جامع مهر">
-        <label>تاریخ آزمون</label><input id="examDate" type="date">
-        <label>نام درس</label><input id="examSubject" maxlength="60" placeholder="مثلاً عربی">
-        <label>تعداد سؤال</label><input id="totalQ" type="number" min="1" value="20" required>
-        <label>تعداد درست</label><input id="correctQ" type="number" min="0" value="10" required>
-        <label>تعداد غلط</label><input id="wrongQ" type="number" min="0" value="2" required>
-        <label>تعداد نزده</label><input id="blankQ" type="number" min="0" value="8" required>
-        <button class="btn" type="submit">تحلیل و ذخیره نتیجه</button>
-      </form>
-      <div id="examResult" class="result hidden"></div>
+      <div class="card-head"><div><h3>تنظیم مسیر کنکور</h3><p>کتاب‌ها به‌صورت خودکار نمایش داده می‌شوند.</p></div></div>
+
+      <div class="field">
+        <label for="track">رشته کنکور</label>
+        <select class="select" id="track">
+          <option value="math">ریاضی فیزیک</option>
+          <option value="experimental">علوم تجربی</option>
+          <option value="humanities">علوم انسانی</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="year">سال کنکور</label>
+        <select class="select" id="year">
+          <option value="1406">۱۴۰۶</option>
+          <option value="1407">۱۴۰۷</option>
+          <option value="1408">۱۴۰۸</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="rankGoal">هدف رتبه (اختیاری)</label>
+        <input class="input" id="rankGoal" type="number" min="1" placeholder="مثلاً ۱۰۰۰">
+      </div>
+
+      <button class="btn" id="saveSettings">ذخیره تنظیمات</button>
+      <div class="notice" id="settingsNotice"></div>
+      <p class="muted">تنظیمات در مرورگر همین دستگاه ذخیره می‌شوند؛ هنوز حساب کاربری یا همگام‌سازی آنلاین وجود ندارد.</p>
     </div>
+
     <div class="card">
-      <h2>📈 آزمون‌های قبلی</h2>
-      <div id="examHistory" class="empty">نتایج ذخیره‌شده اینجا میان.</div>
+      <div class="card-head"><div><h3>هدف درصدی درس‌ها</h3><p>برای هر درس درصد دلخواهت را انتخاب کن.</p></div></div>
+      <div class="subject-list" id="subjects"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="card-head"><div><h3>کتاب‌های رشته انتخابی</h3><p>فهرست پیشنهادی بر اساس درس‌ها</p></div></div>
+    <div class="books" id="allBooks"></div>
+    <p class="muted">فهرست اولیه است؛ پیش از اتکا برای کنکور ۱۴۰۶ باید با منابع رسمی و آخرین تغییرات کتاب‌های درسی تطبیق داده شود.</p>
+  </div>
+</section>
+
+<!-- TESTS -->
+<section class="view" id="tests">
+  <div class="layout">
+    <div class="card">
+      <div class="card-head"><div><h3>ثبت آزمون</h3><p>نتیجه ثبت‌شده در برنامه بعدی اثر می‌گذارد.</p></div></div>
+
+      <div class="field"><label for="testSubject">درس</label><select class="select" id="testSubject"></select></div>
+
+      <div class="two">
+        <div class="field"><label for="totalQ">کل سؤال‌ها</label><input class="input" id="totalQ" type="number" min="1" value="20"></div>
+        <div class="field"><label for="correctQ">درست</label><input class="input" id="correctQ" type="number" min="0" value="8"></div>
+        <div class="field"><label for="wrongQ">غلط</label><input class="input" id="wrongQ" type="number" min="0" value="4"></div>
+        <div class="field"><label for="blankQ">نزده</label><input class="input" id="blankQ" type="number" min="0" value="8"></div>
+      </div>
+
+      <div class="field"><label for="testTopic">مبحث آزمون (اختیاری)</label><input class="input" id="testTopic" placeholder="مثلاً تابع یا فصل دوم"></div>
+      <button class="btn" id="saveTest">ثبت و تحلیل نتیجه</button>
+      <div class="notice" id="testNotice"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div><h3>سابقه آزمون‌ها</h3><p>جدیدترین نتایج در بالای فهرست</p></div></div>
+      <div class="history-list" id="history"><div class="empty">هنوز آزمونی ثبت نکرده‌ای.</div></div>
     </div>
   </div>
 </section>
 
-<section id="progress" class="page">
+<!-- ANALYTICS -->
+<section class="view" id="analytics">
   <div class="card">
-    <h2>📊 گزارش پیشرفت</h2>
-    <p class="muted">خلاصه‌ای از برنامه‌ها و نتایج ثبت‌شده در همین مرورگر.</p>
-    <div id="progressReport" class="result">هنوز اطلاعات کافی ثبت نشده.</div>
-    <hr>
-    <h2>🗂️ پشتیبان اطلاعات</h2>
-    <p class="muted">می‌تونی اطلاعات آزمایشی ذخیره‌شده رو به‌صورت فایل پشتیبان بگیری.</p>
-    <div class="actions">
-      <button class="btn" onclick="exportData()">دریافت نسخه پشتیبان</button>
-      <button class="btn danger" onclick="resetData()">حذف اطلاعات این مرورگر</button>
-    </div>
+    <div class="card-head"><div><h3>نقشه عملکرد تو</h3><p>آخرین درصد هر درس در مقایسه با هدف آن</p></div></div>
+    <div id="analyticsBars"></div>
   </div>
 </section>
-</main>
 
-<footer>کنکور من ✦ نسخه آزمایشی — برنامه‌ریزی بهتر، قدم‌های مطمئن‌تر</footer>
+<div class="footer">کنکور من · نسخه اولیه · برنامه‌ریزی خودکار بر اساس قواعد داخلی سایت</div>
 </div>
 
 <script>
-const $=id=>document.getElementById(id);
-const KEY='konkurManDemo_v1';
-const today=()=>new Date().toLocaleDateString('en-CA');
-const fa=n=>Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2});
-let data={profile:{},tasks:[],exams:[]};
-try{const saved=localStorage.getItem(KEY);if(saved)data={...data,...JSON.parse(saved)}}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(data));render()}catch(e){alert('ذخیره‌سازی در این مرورگر ممکن نشد. فضای ذخیره‌سازی را بررسی کن.')}}
-function showPage(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
- document.querySelectorAll('nav button').forEach(b=>{const on=b.dataset.page===id;b.classList.toggle('active',on);b.classList.toggle('secondary',!on)});
- window.scrollTo({top:0,behavior:'smooth'});
+"use strict";
+
+const DATA = {
+  math: [
+    {name:"ریاضیات",books:["حسابان ۱","حسابان ۲","هندسه ۱","هندسه ۲","هندسه ۳","آمار و احتمال","ریاضیات گسسته"]},
+    {name:"فیزیک",books:["فیزیک دهم","فیزیک یازدهم","فیزیک دوازدهم"]},
+    {name:"شیمی",books:["شیمی دهم","شیمی یازدهم","شیمی دوازدهم"]}
+  ],
+  experimental: [
+    {name:"زیست‌شناسی",books:["زیست‌شناسی دهم","زیست‌شناسی یازدهم","زیست‌شناسی دوازدهم"]},
+    {name:"شیمی",books:["شیمی دهم","شیمی یازدهم","شیمی دوازدهم"]},
+    {name:"فیزیک",books:["فیزیک دهم","فیزیک یازدهم","فیزیک دوازدهم"]},
+    {name:"ریاضی",books:["ریاضی دهم","ریاضی یازدهم","ریاضی دوازدهم"]},
+    {name:"زمین‌شناسی",books:["زمین‌شناسی یازدهم"]}
+  ],
+  humanities: [
+    {name:"علوم و فنون ادبی",books:["علوم و فنون دهم","علوم و فنون یازدهم","علوم و فنون دوازدهم"]},
+    {name:"عربی تخصصی",books:["عربی دهم","عربی یازدهم","عربی دوازدهم"]},
+    {name:"فلسفه و منطق",books:["منطق دهم","فلسفه یازدهم","فلسفه دوازدهم"]},
+    {name:"جامعه‌شناسی",books:["جامعه‌شناسی دهم","جامعه‌شناسی یازدهم","جامعه‌شناسی دوازدهم"]},
+    {name:"ریاضی و آمار",books:["ریاضی و آمار دهم","ریاضی و آمار یازدهم","ریاضی و آمار دوازدهم"]},
+    {name:"تاریخ",books:["تاریخ دهم","تاریخ یازدهم","تاریخ دوازدهم"]},
+    {name:"جغرافیا",books:["جغرافیای دهم","جغرافیای یازدهم","جغرافیای دوازدهم"]},
+    {name:"اقتصاد",books:["اقتصاد دهم"]},
+    {name:"روان‌شناسی",books:["روان‌شناسی یازدهم"]}
+  ]
+};
+
+const $ = id => document.getElementById(id);
+const fa = n => Number(n).toLocaleString("fa-IR");
+const STORAGE_KEY = "konkurManCompleteV1";
+
+let state = {
+  track:"math", year:"1406", rankGoal:"",
+  targets:{}, results:[], tasks:{}, taskDate:""
+};
+
+function loadState(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) state = {...state,...JSON.parse(raw)};
+  } catch(e) {
+    console.warn("ذخیره قبلی قابل خواندن نبود.",e);
+  }
 }
-function fillProfile(){
- const p=data.profile||{};
- ['name','grade','field','year','goal','goalDate','hours','provider'].forEach(id=>{if(p[id]!==undefined)$(id).value=p[id]});
+function saveState(){
+  try {
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  } catch(e) {
+    alert("ذخیره اطلاعات در مرورگر انجام نشد. فضای ذخیره‌سازی را بررسی کن.");
+  }
 }
-$('profileForm').addEventListener('submit',e=>{
- e.preventDefault();
- data.profile={name:$('name').value.trim(),grade:$('grade').value,field:$('field').value,year:$('year').value,goal:$('goal').value.trim(),goalDate:$('goalDate').value,hours:Number($('hours').value)||0,provider:$('provider').value};
- save();$('profileMessage').classList.remove('hidden');$('profileMessage').textContent='پروفایلت در این مرورگر ذخیره شد.';
+function listSubjects(){return DATA[state.track] || DATA.math;}
+function latestResult(name){return state.results.find(r=>r.subject===name);}
+function showNotice(id,message){
+  const el=$(id);el.textContent=message;el.style.display="block";
+  clearTimeout(el._timer);
+  el._timer=setTimeout(()=>el.style.display="none",3500);
+}
+function todayKey(){
+  const d=new Date();
+  return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+}
+function switchView(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
+}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>switchView(b.dataset.view)));
+
+function renderGoals(){
+  $("subjects").innerHTML="";
+  $("allBooks").innerHTML="";
+  $("testSubject").innerHTML="";
+
+  listSubjects().forEach(subject=>{
+    const goal=Number(state.targets[subject.name] ?? 40);
+    const card=document.createElement("div");
+    card.className="subject";
+
+    const top=document.createElement("div");
+    top.className="subject-top";
+
+    const info=document.createElement("div");
+    const name=document.createElement("div");
+    name.className="subject-name";
+    name.textContent=subject.name;
+    const meta=document.createElement("div");
+    meta.className="subject-meta";
+    meta.textContent=subject.books.length+" کتاب";
+    info.append(name,meta);
+
+    const value=document.createElement("span");
+    value.className="target-number";
+    value.textContent=fa(goal)+"٪";
+    top.append(info,value);
+
+    const range=document.createElement("input");
+    range.type="range";
+    range.className="range";
+    range.min=0;range.max=100;range.step=5;range.value=goal;
+    range.setAttribute("aria-label","هدف درصدی "+subject.name);
+    range.addEventListener("input",()=>{
+      state.targets[subject.name]=Number(range.value);
+      value.textContent=fa(range.value)+"٪";
+      saveState();
+      renderAnalytics();
+    });
+
+    const books=document.createElement("div");
+    books.className="books";
+    subject.books.forEach(book=>{
+      const chip=document.createElement("span");
+      chip.className="book";
+      chip.textContent=book;
+      books.append(chip);
+      const all=document.createElement("span");
+      all.className="book";
+      all.textContent=subject.name+" · "+book;
+      $("allBooks").append(all);
+    });
+
+    card.append(top,range,books);
+    $("subjects").append(card);
+
+    const option=document.createElement("option");
+    option.value=subject.name;option.textContent=subject.name;
+    $("testSubject").append(option);
+  });
+}
+
+function scorePriority(subject){
+  const goal=Number(state.targets[subject.name] ?? 40);
+  const result=latestResult(subject.name);
+  if(!result) return 1.15;
+  return Math.max(0.25,Math.min(2.5,1+(goal-result.percent)/40));
+}
+
+function buildPlan(){
+  const hours=Math.max(1,Math.min(14,Number($("studyHours").value)||4));
+  const mode=$("planMode").value;
+  const subjects=listSubjects().map(s=>({...s,priority:scorePriority(s),result:latestResult(s.name)}));
+
+  subjects.sort((a,b)=>{
+    let pB=b.priority,pA=a.priority;
+    if(mode==="review"){pB+=b.result?0.45:0;pA+=a.result?0.45:0;}
+    if(mode==="weak"){pB*=1.3;pA*=1.3;}
+    return pB-pA;
+  });
+
+  const count=Math.max(2,Math.min(subjects.length*2,Math.round(hours*60/45)));
+  const minutes=Math.floor((hours*60)/count/5)*5;
+  const tasks=[];
+  const types=mode==="review"
+    ?["مرور فعال","تست زمان‌دار","تحلیل اشتباهات"]
+    :["یادگیری یک مبحث","تست آموزشی","مرور نکات"];
+
+  for(let i=0;i<count;i++){
+    const subject=subjects[i%subjects.length];
+    const type=types[i%types.length];
+    tasks.push({
+      id:todayKey()+"-"+i,
+      subject:subject.name,
+      title:type+" · "+subject.name,
+      desc:(subject.result?"آخرین درصد: "+fa(subject.result.percent)+"٪":"هنوز نتیجه‌ای ثبت نشده")+
+        " · هدف: "+fa(state.targets[subject.name]??40)+"٪",
+      minutes:minutes,
+      done:false,
+      priority:subject.priority>1.05
+    });
+  }
+
+  state.tasks[todayKey()]=tasks;
+  state.taskDate=todayKey();
+  saveState();
+  renderTasks();
+  showNotice("planNotice","برنامه با توجه به هدف‌ها، نتیجه آزمون‌ها و زمان امروز ساخته شد.");
+}
+
+function renderTasks(){
+  const box=$("tasks");
+  box.innerHTML="";
+  const tasks=state.tasks[todayKey()]||[];
+
+  if(!tasks.length){
+    box.innerHTML='<div class="empty">برای شروع، برنامه امروزت را بساز.</div>';
+    updateToday();return;
+  }
+
+  tasks.forEach((task,index)=>{
+    const item=document.createElement("div");
+    item.className="task";
+
+    const check=document.createElement("input");
+    check.type="checkbox";check.checked=!!task.done;
+    check.setAttribute("aria-label","انجام شد");
+    check.addEventListener("change",()=>{
+      tasks[index].done=check.checked;
+      state.tasks[todayKey()]=tasks;
+      saveState();renderTasks();
+    });
+
+    const body=document.createElement("div");
+    const title=document.createElement("div");
+    title.className="task-title";title.textContent=task.title;
+    const desc=document.createElement("div");
+    desc.className="task-desc";
+    desc.textContent=task.desc+" · "+fa(task.minutes)+" دقیقه";
+    body.append(title,desc);
+
+    const tag=document.createElement("span");
+    tag.className="tag "+(task.done?"done":task.priority?"weak":"");
+    tag.textContent=task.done?"انجام شد":task.priority?"اولویت بالا":"پیشنهادی";
+    item.append(check,body,tag);
+    box.append(item);
+  });
+  updateToday();
+}
+
+function updateToday(){
+  const tasks=state.tasks[todayKey()]||[];
+  const done=tasks.filter(t=>t.done).length;
+  const percent=tasks.length?Math.round(done/tasks.length*100):0;
+  $("todayPercent").textContent=fa(percent)+"٪";
+  $("todayBar").style.width=percent+"%";
+  $("todayCount").textContent=tasks.length
+    ?fa(done)+" از "+fa(tasks.length)+" کار انجام شده"
+    :"هنوز برنامه‌ای ساخته نشده";
+  $("taskCount").textContent=fa(tasks.length);
+  $("plannedHours").textContent=fa((tasks.reduce((sum,t)=>sum+t.minutes,0)/60).toFixed(1));
+  $("weakCount").textContent=fa(listSubjects().filter(s=>scorePriority(s)>1.05).length);
+}
+
+function renderHistory(){
+  const box=$("history");
+  box.innerHTML="";
+  if(!state.results.length){
+    box.innerHTML='<div class="empty">هنوز آزمونی ثبت نکرده‌ای.</div>';return;
+  }
+
+  state.results.slice(0,15).forEach(result=>{
+    const item=document.createElement("div");
+    item.className="history-item";
+    const top=document.createElement("div");
+    top.className="subject-top";
+    const name=document.createElement("strong");
+    name.textContent=result.subject;
+    const score=document.createElement("strong");
+    score.className="target-number";
+    score.textContent=fa(result.percent)+"٪";
+    top.append(name,score);
+
+    const details=document.createElement("div");
+    details.className="subject-meta";
+    details.textContent=(result.topic||"بدون نام مبحث")+" · "+result.date+
+      " · درست: "+fa(result.correct)+"، غلط: "+fa(result.wrong)+"، نزده: "+fa(result.blank);
+    item.append(top,details);
+    box.append(item);
+  });
+}
+
+function renderAnalytics(){
+  const box=$("analyticsBars");
+  if(!box)return;
+  box.innerHTML="";
+
+  listSubjects().forEach(subject=>{
+    const goal=Number(state.targets[subject.name]??40);
+    const result=latestResult(subject.name);
+    const actual=result?result.percent:null;
+
+    const row=document.createElement("div");
+    row.className="bar-row";
+
+    const name=document.createElement("span");
+    name.textContent=subject.name;
+
+    const progress=document.createElement("div");
+    progress.className="progress";
+    const bar=document.createElement("span");
+    bar.style.width=Math.max(0,Math.min(100,actual??0))+"%";
+    progress.append(bar);
+
+    const val=document.createElement("strong");
+    val.textContent=actual===null?"—":fa(actual)+"٪";
+
+    const hint=document.createElement("div");
+    hint.className="subject-meta";
+    hint.style.gridColumn="1 / -1";
+    hint.textContent="هدف: "+fa(goal)+"٪"+
+      (actual===null?" · آزمونی ثبت نشده":" · فاصله از هدف: "+fa(goal-actual)+" واحد درصد");
+
+    row.append(name,progress,val);
+    box.append(row,hint);
+  });
+}
+
+$("generatePlan").addEventListener("click",buildPlan);
+$("quickPlan").addEventListener("click",()=>{
+  switchView("dashboard");
+  buildPlan();
 });
-function generatePlan(){
- const hours=Number($('planHours').value),date=$('planDate').value||today();
- if(!hours||hours<=0||hours>18){alert('زمان مطالعه را بین نیم ساعت تا ۱۸ ساعت وارد کن.');return}
- const subjects=$('subjects').value.split('\n').map(s=>s.trim()).filter(Boolean);
- if(!subjects.length){alert('حداقل نام یک درس را وارد کن.');return}
- const mode=$('priority').value;
- let blocks=mode==='learn'?[.55,.25,.20]:mode==='test'?[.25,.55,.20]:mode==='review'?[.25,.25,.50]:[.40,.40,.20];
- const types=['یادگیری و مطالعه','تست و تمرین','مرور و تحلیل اشتباهات'];
- const minutes=blocks.map(x=>Math.round(hours*60*x));
- const total=minutes.reduce((a,b)=>a+b,0);minutes[0]+=Math.round(hours*60)-total;
- data.tasks=[];
- subjects.forEach((subject,i)=>{
-  const kind=types[i%3],mins=minutes[i%3];
-  data.tasks.push({id:Date.now()+i, date, title:subject+' — '+kind, detail:fa(mins)+' دقیقه',done:false});
- });
- if(subjects.length===1){
-  data.tasks=[
-   {id:Date.now()+1,date,title:subjects[0]+' — یادگیری و مطالعه',detail:fa(minutes[0])+' دقیقه',done:false},
-   {id:Date.now()+2,date,title:subjects[0]+' — تست و تمرین',detail:fa(minutes[1])+' دقیقه',done:false},
-   {id:Date.now()+3,date,title:subjects[0]+' — مرور و تحلیل اشتباهات',detail:fa(minutes[2])+' دقیقه',done:false}
-  ];
- }
- save();showPage('planner');
-}
-function addCustomTask(){
- const title=prompt('عنوان کار درسی چیه؟');if(!title||!title.trim())return;
- data.tasks.push({id:Date.now(),date:$('planDate').value||today(),title:title.trim(),detail:'کار اضافه‌شده',done:false});save();
-}
-function toggleTask(id){const t=data.tasks.find(t=>t.id===id);if(t){t.done=!t.done;save()}}
-function clearTasks(){if(confirm('برنامه ذخیره‌شده پاک بشه؟')){data.tasks=[];save()}}
-$('examForm').addEventListener('submit',e=>{
- e.preventDefault();
- const total=+$('totalQ').value,correct=+$('correctQ').value,wrong=+$('wrongQ').value,blank=+$('blankQ').value;
- if(correct+wrong+blank!==total){alert('مجموع درست، غلط و نزده باید برابر تعداد سؤال‌ها باشه.');return}
- const percent=total?((correct-wrong/3)/total*100):0;
- const exam={id:Date.now(),name:$('examName').value.trim()||'آزمون بدون نام',date:$('examDate').value||today(),subject:$('examSubject').value.trim()||'درس نامشخص',total,correct,wrong,blank,percent};
- data.exams.push(exam);save();
- $('examResult').classList.remove('hidden');
- $('examResult').textContent='درصد با نمره منفی: '+fa(percent)+'٪\nدرست: '+fa(correct)+' | غلط: '+fa(wrong)+' | نزده: '+fa(blank)+'\n'+(percent<30?'پیشنهاد: یادگیری پایه و بررسی پاسخ‌های غلط را در اولویت بگذار.':percent<60?'پیشنهاد: پاسخ‌های غلط را بررسی کن و تست آموزشی بیشتری بزن.':'پیشنهاد: مرور نکته‌های دشوار و تست زمان‌دار را ادامه بده.');
+$("clearPlan").addEventListener("click",()=>{
+  delete state.tasks[todayKey()];
+  saveState();renderTasks();
 });
-function render(){
- const p=data.profile||{},tasks=data.tasks||[],exams=data.exams||[];
- $('welcomeName').textContent=p.name||'کنکوری پرتلاش';
- $('homeSummary').textContent=p.grade?(p.grade+' · رشته '+p.field+' · کنکور '+p.year):'پروفایل تحصیلی‌ات رو تکمیل کن تا مسیرت رو مشخص کنیم.';
- $('homeGoal').textContent=p.goal||'هنوز هدفی ثبت نکردی.';
- $('homeDate').textContent=p.goalDate?'تاریخ هدف: '+p.goalDate:'';
- const todays=tasks.filter(t=>t.date===( $('planDate').value||today()));
- $('taskCount').textContent=fa(todays.length);
- $('doneCount').textContent=fa(todays.filter(t=>t.done).length);
- $('examCount').textContent=fa(exams.length);
- $('homeTasks').innerHTML=todays.length?todays.map(t=>'<div class="task '+(t.done?'done':'')+'"><input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask('+t.id+')"><div><div class="task-title">'+esc(t.title)+'</div><small>'+esc(t.detail)+'</small></div></div>').join(''):'<div class="empty">برای امروز برنامه‌ای نیست.</div>';
- $('taskList').innerHTML=tasks.length?tasks.map(t=>'<div class="task '+(t.done?'done':'')+'"><input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask('+t.id+')"><div style="flex:1"><div class="task-title">'+esc(t.title)+'</div><small>'+esc(t.date)+' · '+esc(t.detail)+'</small></div></div>').join(''):'<div class="empty">هنوز برنامه‌ای ثبت نشده.</div>';
- $('homeExam').innerHTML=exams.length?esc(exams[exams.length-1].subject)+' — '+fa(exams[exams.length-1].percent)+'٪':'هنوز آزمونی ثبت نکردی.';
- $('examHistory').innerHTML=exams.length?[...exams].reverse().map(x=>'<div class="task"><div><b>'+esc(x.subject)+'</b><small>'+esc(x.name)+' · '+esc(x.date)+'</small><span class="badge">'+fa(x.percent)+'٪</span></div></div>').join(''):'<div class="empty">نتایج ذخیره‌شده اینجا میان.</div>';
- const done=tasks.filter(t=>t.done).length;
- const avg=exams.length?exams.reduce((a,x)=>a+x.percent,0)/exams.length:0;
- const best=exams.length?Math.max(...exams.map(x=>x.percent)):0;
- $('progressReport').textContent='کارهای ثبت‌شده: '+fa(tasks.length)+'\nکارهای انجام‌شده: '+fa(done)+'\nمیزان انجام کارها: '+fa(tasks.length?done/tasks.length*100:0)+'٪\nتعداد آزمون‌ها: '+fa(exams.length)+'\nمیانگین درصدهای ثبت‌شده: '+fa(avg)+'٪\nبهترین درصد ثبت‌شده: '+fa(best)+'٪\n\nاین گزارش فقط بر اساس اطلاعات واردشده در این نسخه است.';
+
+$("track").addEventListener("change",()=>{
+  state.track=$("track").value;
+  renderGoals();renderHistory();renderAnalytics();updateToday();saveState();
+});
+
+$("year").addEventListener("change",()=>{
+  state.year=$("year").value;
+  $("headerYear").textContent="کنکور "+fa(state.year);
+  saveState();
+});
+
+$("saveSettings").addEventListener("click",()=>{
+  state.track=$("track").value;
+  state.year=$("year").value;
+  state.rankGoal=$("rankGoal").value;
+  saveState();
+  $("headerYear").textContent="کنکور "+fa(state.year);
+  showNotice("settingsNotice","تنظیمات ذخیره شدند.");
+});
+
+$("saveTest").addEventListener("click",()=>{
+  const total=Number($("totalQ").value);
+  const correct=Number($("correctQ").value);
+  const wrong=Number($("wrongQ").value);
+  const blank=Number($("blankQ").value);
+
+  if(!Number.isInteger(total)||total<1||
+     !Number.isInteger(correct)||correct<0||
+     !Number.isInteger(wrong)||wrong<0||
+     !Number.isInteger(blank)||blank<0||
+     correct+wrong+blank!==total){
+    showNotice("testNotice","تعداد درست، غلط و نزده باید جمعاً برابر تعداد کل سؤال‌ها باشد.");
+    return;
+  }
+
+  // محاسبه درصد با نمره منفی یک‌سوم برای پاسخ غلط
+  const percent=Math.round(((correct-wrong/3)/total)*10000)/100;
+  state.results.unshift({
+    subject:$("testSubject").value,
+    total,correct,wrong,blank,percent,
+    topic:$("testTopic").value.trim(),
+    date:new Date().toLocaleDateString("fa-IR")
+  });
+  state.results=state.results.slice(0,100);
+  saveState();
+  renderHistory();renderAnalytics();updateToday();
+  showNotice("testNotice","نتیجه ثبت شد و در برنامه‌ریزی بعدی لحاظ می‌شود.");
+});
+
+function init(){
+  $("track").value=state.track;
+  $("year").value=state.year;
+  $("rankGoal").value=state.rankGoal||"";
+  $("headerYear").textContent="کنکور "+fa(state.year);
+  $("dateLabel").textContent=new Date().toLocaleDateString("fa-IR",{month:"long",day:"numeric"});
+  renderGoals();
+  renderTasks();
+  renderHistory();
+  renderAnalytics();
 }
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function exportData(){
- const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
- const url=URL.createObjectURL(blob),a=document.createElement('a');
- a.href=url;a.download='konkur-man-backup.json';a.click();URL.revokeObjectURL(url);
-}
-function resetData(){
- if(!confirm('همه اطلاعات ذخیره‌شده این نسخه در همین مرورگر حذف بشه؟'))return;
- data={profile:{},tasks:[],exams:[]};try{localStorage.removeItem(KEY)}catch(e){}
- location.reload();
-}
-$('planDate').value=today();$('examDate').value=today();
-fillProfile();render();
+loadState();
+init();
 </script>
 </body>
 </html>
